@@ -13,6 +13,7 @@ export const connectMongoose=async()=>{
               
         });
         console.log("MongoDb is connected using Mongoose");
+        await addCategories();
         
     }
     catch(err){
