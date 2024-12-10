@@ -59,9 +59,12 @@ server.use((req, res)=>{
 
 server.use((err,req,res,next)=>{
     console.log(err);
-    if(err instanceof ApplicationError);
-    res.status(err.code).send(err.message);
-    res.status(500).send("Something went wrong .Please try again")
+    if(err instanceof ApplicationError){
+        return res.status(err.code).send(err.message);
+
+    }
+    
+    return res.status(500).send("Something went wrong .Please try again")
 })
 
 server.listen("3000",()=>{
