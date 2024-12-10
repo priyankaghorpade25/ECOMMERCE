@@ -7,3 +7,4 @@ export const categorySchema= new mongoose.Schema({
         ref:"products"
     }
 })
+categorySchema.index({ name: 1 });

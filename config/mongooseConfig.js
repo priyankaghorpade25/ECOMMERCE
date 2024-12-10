@@ -3,9 +3,17 @@ import { categorySchema } from "../src/features/product/category.schema.js";
 
 export const connectMongoose=async()=>{
     try{
-        mongoose.connect(process.env.DB_URL);
+        mongoose.connect(process.env.DB_URL,{
+            
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                serverSelectionTimeoutMS: 30000,  // 30 seconds
+                socketTimeoutMS: 45000,  // 45 seconds for socket timeout
+                connectTimeoutMS: 10000,  // 10 seconds for connection timeout
+              
+        });
         console.log("MongoDb is connected using Mongoose");
-        addCategories();
+        
     }
     catch(err){
         console.log(err);
